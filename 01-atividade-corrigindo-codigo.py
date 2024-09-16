@@ -63,3 +63,5 @@ print(f"A média dos números impares é: {media_impares}")
 print(f"O maior número digitado foi: {maior_numero}")
 print(f"O menor número digitado foi: {menor_numero}")
 print(f"A média geral é: {media_geral}")
+
+#(não deu tempo de fazer tudo)
