@@ -13,55 +13,63 @@ O objetivo é criar um algoritmo que leia 5 números inteiros e, em seguida, mos
 8. Mostrar os números lidos na ordem inversa.
 """
 import os
-os.system("cls || clear")
+os.system("cls || clear")  # Limpar a tela (opcional)
 
-# Variáveis para armazenar as estatísticas
-lista_vetores = []
-QUANTIDADE_NUMEROS = 5
+def inverter_lista(lista):
+    lista_invertida = []
+    for i in range(len(lista) - 1, -1, -1):
+        lista_invertida.append(lista[i])
+    return lista_invertida
+
+numeros = []
+for i in range(5):
+    numero = int(input(f"Digite o {i + 1}º número: "))
+    numeros.append(numero)
+
 quantidade_pares = 0
 quantidade_impares = 0
 quantidade_positivos = 0
 quantidade_negativos = 0
-maior_numero = 0
-menor_numero = 0
 soma_pares = 0
 soma_impares = 0
-media_pares = 0
-media_impares = 0
-media_geral = 0
+soma_geral = 0
 
-# Quantidade de números pares e impares.
 maior_numero = float('-inf')
 menor_numero = float('inf')
 
-for i in range(5):
-    numero = int(input(f"Digite o {i+1}° número: "))
+for numero in numeros:
     if numero % 2 == 0:
         quantidade_pares += 1
         soma_pares += numero
-        media_pares = soma_pares/quantidade_pares
-    else: 
+    else:
         quantidade_impares += 1
         soma_impares += numero
-        media_impares = soma_impares/quantidade_impares
-    if numero < 0:
-        quantidade_negativos += 1
-    else:
+
+    if numero > 0:
         quantidade_positivos += 1
+    elif numero < 0:
+        quantidade_negativos += 1
 
-        maior_numero = max(maior_numero, numero)
-        menor_numero = min(menor_numero, numero) 
+    maior_numero = max(maior_numero, numero)
+    menor_numero = min(menor_numero, numero)
 
-        media_geral = numero / QUANTIDADE_NUMEROS
-        
-print(f"Quantidade de números pares: {quantidade_pares}")
-print(f"Quantidade de números impares: {quantidade_impares}")
-print(f"Quantidade de números positivos: {quantidade_positivos}")
-print(f"Quantidade de números negativos: {quantidade_negativos}")
-print(f"A média dos números pares é: {media_pares}")
-print(f"A média dos números impares é: {media_impares}")
-print(f"O maior número digitado foi: {maior_numero}")
-print(f"O menor número digitado foi: {menor_numero}")
-print(f"A média geral é: {media_geral}")
+    soma_geral += numero
 
-#(não deu tempo de fazer tudo)
+media_pares = soma_pares / quantidade_pares if quantidade_pares > 0 else 0
+media_impares = soma_impares / quantidade_impares if quantidade_impares > 0 else 0
+media_geral = soma_geral / 5
+
+
+numeros_invertidos = inverter_lista(numeros)
+
+print("\nAqui estão os resultados dos números que você digitou:")
+print(f"Quantos números são pares: {quantidade_pares}")
+print(f"Quantos números são ímpares: {quantidade_impares}")
+print(f"Quantos números são positivos: {quantidade_positivos}")
+print(f"Quantos números são negativos: {quantidade_negativos}")
+print(f"Maior número: {maior_numero}")
+print(f"Menor número: {menor_numero}")
+print(f"Média dos números pares: {media_pares:.2f}")
+print(f"Média dos números ímpares: {media_impares:.2f}")
+print(f"Média de todos os números: {media_geral:.2f}")
+print(f"Números na ordem inversa: {numeros_invertidos}")
