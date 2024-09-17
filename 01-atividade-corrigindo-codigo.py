@@ -25,7 +25,8 @@ numeros = []
 for i in range(5):
     numero = int(input(f"Digite o {i + 1}º número: "))
     numeros.append(numero)
-
+    
+lista_vetores = []
 quantidade_pares = 0
 quantidade_impares = 0
 quantidade_positivos = 0
@@ -60,7 +61,7 @@ media_impares = soma_impares / quantidade_impares if quantidade_impares > 0 else
 media_geral = soma_geral / 5
 
 
-numeros_invertidos = inverter_lista(numeros)
+numeros_invertidos = inverter_lista(lista_vetores)
 
 print("\nAqui estão os resultados dos números que você digitou:")
 print(f"Quantos números são pares: {quantidade_pares}")
